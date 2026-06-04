@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
+import { url } from '../lib/url';
 
 // TODO: Formspree-Endpoint einsetzen, sobald Account angelegt
 // const FORMSPREE_ENDPOINT = 'https://formspree.io/f/XXXXXXXX';
@@ -195,7 +196,7 @@ const encType = FORMSPREE_ENDPOINT ? 'application/x-www-form-urlencoded' : 'text
         <label class="flex items-start gap-3 cursor-pointer">
           <input type="checkbox" name="datenschutz" required class="mt-1.5 w-5 h-5 accent-coral" />
           <span class="text-base text-ink/85">
-            Ich habe die <a href="/impressum#datenschutz" class="text-coral font-semibold hover:underline">Datenschutzhinweise</a>
+            Ich habe die <a href={`${url('/impressum')}#datenschutz`} class="text-coral font-semibold hover:underline">Datenschutzhinweise</a>
             gelesen und stimme der Verarbeitung meiner Daten zum Zweck der
             Mitgliedschaft / Spende zu. *
           </span>
@@ -213,7 +214,7 @@ const encType = FORMSPREE_ENDPOINT ? 'application/x-www-form-urlencoded' : 'text
       <div class="flex flex-col sm:flex-row gap-4 items-center justify-between pt-4 border-t-2 border-cream">
         <p class="text-sm text-ink/60">
           Lieber auf Papier?
-          <a href="/anmeldung-formular.pdf" class="text-coral font-semibold hover:underline">
+          <a href={url('/anmeldung-formular.pdf')} class="text-coral font-semibold hover:underline">
             PDF-Formular herunterladen 📄
           </a>
           <span class="block text-xs text-ink/40">(TODO: PDF hochladen)</span>

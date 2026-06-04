@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import Card from '../components/Card.astro';
+import { url } from '../lib/url';
 ---
 <BaseLayout title="Förderverein Kita Bretzenheim-Süd e.V. – Willkommen">
   <!-- HERO -->
@@ -27,7 +28,7 @@ import Card from '../components/Card.astro';
         Hand in Hand mit dem <span class="font-bold text-ink">Kita-Team</span>. 💛
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <Button href="/anmeldung" size="xl" variant="primary">
+        <Button href={url('/anmeldung')} size="xl" variant="primary">
           🎉 Jetzt Mitglied werden
         </Button>
         <Button href="#was-wir-machen" size="lg" variant="ghost">
@@ -96,7 +97,7 @@ import Card from '../components/Card.astro';
         Eingetragen beim <strong>Amtsgericht Mainz unter VR 42087</strong>.
         Alle Beiträge und Spenden kommen <strong>zu 100 %</strong> den Kindern zugute.
       </p>
-      <Button href="/anmeldung" size="xl" variant="secondary">
+      <Button href={url('/anmeldung')} size="xl" variant="secondary">
         🌟 Mitmachen
       </Button>
     </div>

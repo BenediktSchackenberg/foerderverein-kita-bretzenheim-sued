@@ -1,0 +1,22 @@
+---
+export interface Props {
+  emoji: string;
+  title: string;
+  tint?: 'yellow' | 'mint' | 'coral';
+}
+
+const { emoji, title, tint = 'yellow' } = Astro.props;
+
+const tints = {
+  yellow: 'bg-sunny/15 border-sunny/40 shadow-soft-yellow hover:bg-sunny/25',
+  mint: 'bg-mint/20 border-mint/50 shadow-soft-mint hover:bg-mint/30',
+  coral: 'bg-coral/15 border-coral/40 shadow-soft-coral hover:bg-coral/25',
+};
+---
+<article class={`rounded-3xl p-7 md:p-8 border-2 transition-all duration-300 hover:-translate-y-2 hover:rotate-1 ${tints[tint]}`}>
+  <div class="text-5xl md:text-6xl mb-4">{emoji}</div>
+  <h3 class="font-display font-bold text-2xl md:text-3xl mb-3 text-ink">{title}</h3>
+  <div class="text-ink/80 text-lg leading-relaxed">
+    <slot />
+  </div>
+</article>

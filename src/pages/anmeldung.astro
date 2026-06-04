@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+
+// TODO: Formspree-Endpoint einsetzen, sobald Account angelegt
+// const FORMSPREE_ENDPOINT = 'https://formspree.io/f/XXXXXXXX';
+const FORMSPREE_ENDPOINT = '';
+const action = FORMSPREE_ENDPOINT || 'mailto:fv.mz.kita@gmail.com';
+const method = FORMSPREE_ENDPOINT ? 'POST' : 'POST'; // mailto akzeptiert POST → fällt auf default zurück
+const encType = FORMSPREE_ENDPOINT ? 'application/x-www-form-urlencoded' : 'text/plain';
+---
+<BaseLayout title="Anmeldung – Förderverein Kita Bretzenheim-Süd e.V.">
+  <section class="relative overflow-hidden bg-gradient-to-b from-sunny/20 via-cream to-cream pt-14 pb-10">
+    <div class="absolute top-0 right-0 text-9xl opacity-30" aria-hidden="true">🎉</div>
+    <div class="max-w-3xl mx-auto px-4 text-center relative">
+      <h1 class="font-display font-bold text-4xl md:text-6xl mb-4">
+        Willkommen im <span class="text-leaf">Team</span>! 💛
+      </h1>
+      <p class="text-lg md:text-xl text-ink/75 max-w-2xl mx-auto">
+        Schön, dass du dabei sein willst. Fülle einfach das Formular aus –
+        wir melden uns kurz zur Bestätigung.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-4 pb-20">
+    <form
+      action={action}
+      method={method}
+      enctype={encType}
+      class="bg-white rounded-3xl shadow-2xl border-2 border-sunny/30 p-6 md:p-10 space-y-8"
+    >
+      <!-- PERSÖNLICHE DATEN -->
+      <fieldset class="space-y-5">
+        <legend class="font-display font-bold text-2xl md:text-3xl mb-2 flex items-center gap-2">
+          <span>📝</span> Deine Daten
+        </legend>
+
+        <div>
+          <label for="name" class="block font-semibold mb-1.5">Vor- &amp; Nachname *</label>
+          <input
+            id="name" name="name" type="text" required
+            class="w-full rounded-2xl border-2 border-cream bg-cream/60 px-4 py-3 text-lg focus:border-sunny focus:bg-white focus:outline-none transition"
+            placeholder="Max Mustermann"
+          />
+        </div>
+
+        <div>
+          <label for="strasse" class="block font-semibold mb-1.5">Straße &amp; Hausnummer *</label>
+          <input
+            id="strasse" name="strasse" type="text" required
+            class="w-full rounded-2xl border-2 border-cream bg-cream/60 px-4 py-3 text-lg focus:border-sunny focus:bg-white focus:outline-none transition"
+            placeholder="Musterstraße 12"
+          />
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="sm:col-span-1">
+            <label for="plz" class="block font-semibold mb-1.5">PLZ *</label>
+            <input
+              id="plz" name="plz" type="text" inputmode="numeric" required
+              pattern="[0-9]{5}" maxlength="5"
+              class="w-full rounded-2xl border-2 border-cream bg-cream/60 px-4 py-3 text-lg focus:border-sunny focus:bg-white focus:outline-none transition"
+              placeholder="55128"
+            />
+          </div>
+          <div class="sm:col-span-2">
+            <label for="ort" class="block font-semibold mb-1.5">Ort *</label>
+            <input
+              id="ort" name="ort" type="text" required
+              class="w-full rounded-2xl border-2 border-cream bg-cream/60 px-4 py-3 text-lg focus:border-sunny focus:bg-white focus:outline-none transition"
+              placeholder="Mainz"
+            />
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="telefon" class="block font-semibold mb-1.5">Telefon</label>
+            <input
+              id="telefon" name="telefon" type="tel"
+              class="w-full rounded-2xl border-2 border-cream bg-cream/60 px-4 py-3 text-lg focus:border-sunny focus:bg-white focus:outline-none transition"
+              placeholder="0151 12345678"
+            />
+          </div>
+          <div>
+            <label for="email" class="block font-semibold mb-1.5">E-Mail *</label>
+            <input
+              id="email" name="email" type="email" required
+              class="w-full rounded-2xl border-2 border-cream bg-cream/60 px-4 py-3 text-lg focus:border-sunny focus:bg-white focus:outline-none transition"
+              placeholder="du@example.de"
+            />
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- BEITRAG -->
+      <fieldset class="space-y-4 bg-mint/10 rounded-2xl p-5 md:p-6 border-2 border-mint/30">
+        <legend class="font-display font-bold text-2xl md:text-3xl px-2 flex items-center gap-2">
+          <span>💚</span> Ich möchte…
+        </legend>
+
+        <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/60 cursor-pointer transition">
+          <input type="radio" name="beitragsart" value="standard" required class="mt-1.5 w-5 h-5 accent-leaf" checked />
+          <span class="text-lg">
+            <strong>Mitglied werden – 12 € pro Jahr</strong> (Mindestbeitrag)
+          </span>
+        </label>
+
+        <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/60 cursor-pointer transition">
+          <input type="radio" name="beitragsart" value="hoeher" class="mt-1.5 w-5 h-5 accent-leaf" />
+          <span class="text-lg flex flex-wrap items-center gap-2">
+            <strong>Mitglied werden mit höherem Beitrag:</strong>
+            <input
+              type="number" name="hoeherer_betrag" min="12" step="1"
+              class="w-28 rounded-xl border-2 border-mint/60 bg-white px-3 py-1.5 text-lg focus:border-leaf focus:outline-none"
+              placeholder="z.B. 24"
+            />
+            <span>€ / Jahr</span>
+          </span>
+        </label>
+
+        <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-white/60 cursor-pointer transition">
+          <input type="radio" name="beitragsart" value="spende" class="mt-1.5 w-5 h-5 accent-leaf" />
+          <span class="text-lg flex flex-wrap items-center gap-2">
+            <strong>Einmalig spenden:</strong>
+            <input
+              type="number" name="spendenbetrag" min="1" step="1"
+              class="w-28 rounded-xl border-2 border-mint/60 bg-white px-3 py-1.5 text-lg focus:border-leaf focus:outline-none"
+              placeholder="z.B. 50"
+            />
+            <span>€</span>
+          </span>
+        </label>
+      </fieldset>
+
+      <!-- SEPA -->
+      <fieldset class="space-y-5 bg-sunny/10 rounded-2xl p-5 md:p-6 border-2 border-sunny/40">
+        <legend class="font-display font-bold text-2xl md:text-3xl px-2 flex items-center gap-2">
+          <span>🏦</span> SEPA-Lastschriftmandat
+        </legend>
+
+        <div>
+          <label for="kontoinhaber" class="block font-semibold mb-1.5">Name Kontoinhaber*in *</label>
+          <input
+            id="kontoinhaber" name="kontoinhaber" type="text" required
+            class="w-full rounded-2xl border-2 border-sunny/30 bg-white px-4 py-3 text-lg focus:border-sunny focus:outline-none transition"
+            placeholder="Max Mustermann"
+          />
+        </div>
+
+        <div>
+          <label for="bank" class="block font-semibold mb-1.5">Kreditinstitut *</label>
+          <input
+            id="bank" name="bank" type="text" required
+            class="w-full rounded-2xl border-2 border-sunny/30 bg-white px-4 py-3 text-lg focus:border-sunny focus:outline-none transition"
+            placeholder="Sparkasse Mainz"
+          />
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="sm:col-span-2">
+            <label for="iban" class="block font-semibold mb-1.5">IBAN *</label>
+            <input
+              id="iban" name="iban" type="text" required
+              pattern="[A-Z]{2}[0-9 ]{18,32}"
+              class="w-full rounded-2xl border-2 border-sunny/30 bg-white px-4 py-3 text-lg font-mono uppercase focus:border-sunny focus:outline-none transition"
+              placeholder="DE74 5535 0010 0200 1305 57"
+            />
+          </div>
+          <div class="sm:col-span-1">
+            <label for="bic" class="block font-semibold mb-1.5">BIC</label>
+            <input
+              id="bic" name="bic" type="text"
+              class="w-full rounded-2xl border-2 border-sunny/30 bg-white px-4 py-3 text-lg font-mono uppercase focus:border-sunny focus:outline-none transition"
+              placeholder="MALADE51MNZ"
+            />
+          </div>
+        </div>
+
+        <div class="text-sm text-ink/75 bg-white/70 rounded-xl p-4 leading-relaxed">
+          <strong>Einzugsermächtigung:</strong> Ich ermächtige den Förderverein Kita
+          Bretzenheim-Süd e.V., den Mitgliedsbeitrag / die Spende von meinem Konto
+          mittels SEPA-Lastschrift einzuziehen. Zugleich weise ich mein Kreditinstitut
+          an, die vom Verein auf mein Konto gezogenen Lastschriften einzulösen.
+          Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem
+          Belastungsdatum, die Erstattung des belasteten Betrages verlangen.
+        </div>
+      </fieldset>
+
+      <!-- ZUSTIMMUNG -->
+      <fieldset class="space-y-4">
+        <legend class="sr-only">Einwilligungen</legend>
+
+        <label class="flex items-start gap-3 cursor-pointer">
+          <input type="checkbox" name="datenschutz" required class="mt-1.5 w-5 h-5 accent-coral" />
+          <span class="text-base text-ink/85">
+            Ich habe die <a href="/impressum#datenschutz" class="text-coral font-semibold hover:underline">Datenschutzhinweise</a>
+            gelesen und stimme der Verarbeitung meiner Daten zum Zweck der
+            Mitgliedschaft / Spende zu. *
+          </span>
+        </label>
+
+        <label class="flex items-start gap-3 cursor-pointer">
+          <input type="checkbox" name="satzung" required class="mt-1.5 w-5 h-5 accent-coral" />
+          <span class="text-base text-ink/85">
+            Ich erkenne die Satzung des Fördervereins Kita Bretzenheim-Süd e.V. an. *
+          </span>
+        </label>
+      </fieldset>
+
+      <!-- SUBMIT -->
+      <div class="flex flex-col sm:flex-row gap-4 items-center justify-between pt-4 border-t-2 border-cream">
+        <p class="text-sm text-ink/60">
+          Lieber auf Papier?
+          <a href="/anmeldung-formular.pdf" class="text-coral font-semibold hover:underline">
+            PDF-Formular herunterladen 📄
+          </a>
+          <span class="block text-xs text-ink/40">(TODO: PDF hochladen)</span>
+        </p>
+        <Button type="submit" size="lg" variant="primary">
+          Absenden ✨
+        </Button>
+      </div>
+
+      <p class="text-xs text-ink/50 text-center pt-2">
+        * Pflichtfelder. Mit Absenden werden die Daten an
+        <a href="mailto:fv.mz.kita@gmail.com" class="underline">fv.mz.kita@gmail.com</a>
+        übermittelt.
+      </p>
+    </form>
+  </section>
+</BaseLayout>

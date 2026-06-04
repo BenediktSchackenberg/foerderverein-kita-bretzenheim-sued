@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+---
+<BaseLayout title="Förderverein Kita Bretzenheim-Süd e.V. – Willkommen">
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <!-- Deko Blobs -->
+    <div class="absolute -top-20 -right-20 w-80 h-80 bg-sunny/30 rounded-full blur-3xl" aria-hidden="true"></div>
+    <div class="absolute top-40 -left-20 w-72 h-72 bg-mint/40 rounded-full blur-3xl" aria-hidden="true"></div>
+    <div class="absolute bottom-0 right-1/3 w-60 h-60 bg-coral/20 rounded-full blur-3xl" aria-hidden="true"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 pt-16 pb-24 md:pt-24 md:pb-32 text-center">
+      <div class="flex justify-center gap-3 text-5xl md:text-6xl mb-6 animate-pulse">
+        <span>🌈</span>
+        <span class="animate-bounce">🌻</span>
+        <span>🧸</span>
+      </div>
+      <h1 class="font-display font-bold text-4xl md:text-6xl lg:text-7xl leading-tight mb-6">
+        Förderverein <br class="hidden md:block" />
+        <span class="text-leaf">Kita Bretzenheim-Süd</span> <span class="text-coral">e.V.</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-ink/75 max-w-3xl mx-auto mb-10 leading-relaxed">
+        Gemeinsam machen wir den Kita-Alltag bunter, kreativer und unvergesslich.
+        Für die <span class="font-bold text-ink">Kinder</span>, mit den <span class="font-bold text-ink">Eltern</span>,
+        Hand in Hand mit dem <span class="font-bold text-ink">Kita-Team</span>. 💛
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <Button href="/anmeldung" size="xl" variant="primary">
+          🎉 Jetzt Mitglied werden
+        </Button>
+        <Button href="#was-wir-machen" size="lg" variant="ghost">
+          Mehr erfahren ↓
+        </Button>
+      </div>
+    </div>
+
+    <!-- Wellen-SVG -->
+    <svg class="absolute bottom-0 left-0 w-full text-white" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="currentColor" d="M0,40 C360,100 720,0 1080,50 C1260,75 1380,60 1440,40 L1440,100 L0,100 Z"></path>
+    </svg>
+  </section>
+
+  <!-- 3 KACHELN -->
+  <section id="was-wir-machen" class="bg-white py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-14">
+        <h2 class="font-display font-bold text-3xl md:text-5xl mb-4">
+          Was wir <span class="text-coral">tun</span> ⭐
+        </h2>
+        <p class="text-lg md:text-xl text-ink/70 max-w-2xl mx-auto">
+          Drei gute Gründe, warum sich der Förderverein lohnt.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        <Card emoji="🎨" title="Was wir machen" tint="yellow">
+          Wir unterstützen <strong>Aktionen, Feste und Ausflüge</strong> der Kita –
+          vom Sommerfest über Laternenumzug bis zum Theaterbesuch. Damit kein
+          Kind etwas verpasst.
+        </Card>
+        <Card emoji="📚" title="Was wir erreichen" tint="mint">
+          Mit eurem Beitrag finanzieren wir <strong>Spielzeug, Bücher und
+          besondere Anschaffungen</strong>, für die im Kita-Budget kein Platz ist.
+          Spürbar, sichtbar, sofort.
+        </Card>
+        <Card emoji="🤝" title="Wie du helfen kannst" tint="coral">
+          <strong>Mitglied werden ab 12 € im Jahr</strong> – oder einmalig spenden.
+          Jeder Euro fließt zu 100 % in die Kita. Anpacken willkommen,
+          ist aber kein Muss!
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÜBER UNS -->
+  <section class="py-20 relative overflow-hidden">
+    <div class="absolute top-10 right-10 text-9xl opacity-20 rotate-12" aria-hidden="true">🌳</div>
+    <div class="absolute bottom-10 left-10 text-9xl opacity-20 -rotate-12" aria-hidden="true">🎈</div>
+
+    <div class="relative max-w-4xl mx-auto px-4 text-center">
+      <span class="inline-block px-4 py-1.5 bg-mint/40 text-leaf font-display font-bold rounded-full mb-5">
+        Über uns
+      </span>
+      <h2 class="font-display font-bold text-3xl md:text-5xl mb-6">
+        Eltern, die für ihre Kita anpacken 💪
+      </h2>
+      <p class="text-lg md:text-xl text-ink/75 leading-relaxed mb-6">
+        Der <strong>Förderverein Kita Bretzenheim-Süd e.V.</strong> ist ein gemeinnütziger
+        Verein, getragen von Eltern und Freunden der Kita. Wir ergänzen mit Spenden und
+        Mitgliedsbeiträgen das, was öffentliche Mittel nicht abdecken – und schaffen so
+        kleine und große Glücksmomente im Kita-Alltag.
+      </p>
+      <p class="text-lg md:text-xl text-ink/75 leading-relaxed mb-10">
+        Eingetragen beim <strong>Amtsgericht Mainz unter VR 42087</strong>.
+        Alle Beiträge und Spenden kommen <strong>zu 100 %</strong> den Kindern zugute.
+      </p>
+      <Button href="/anmeldung" size="xl" variant="secondary">
+        🌟 Mitmachen
+      </Button>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,133 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Förderverein Kita Bretzenheim-Süd e.V. – wir unterstützen unsere Kita mit Herz, Aktionen und Spenden.' } = Astro.props;
+
+const navItems = [
+  { href: '/', label: 'Start' },
+  { href: '/anmeldung', label: 'Anmeldung' },
+  { href: '/impressum', label: 'Impressum' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-cream text-ink font-body antialiased min-h-screen flex flex-col">
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 bg-cream/90 backdrop-blur border-b-4 border-sunny/30">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+        <a href="/" class="flex items-center gap-2 group">
+          <span class="text-3xl md:text-4xl transition-transform group-hover:rotate-12">🌻</span>
+          <span class="font-display font-bold text-lg md:text-xl leading-tight">
+            <span class="block">Förderverein</span>
+            <span class="block text-leaf">Kita Bretzenheim-Süd</span>
+          </span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-2">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class={`px-4 py-2 rounded-full font-semibold transition-all hover:scale-105 ${
+                currentPath === item.href
+                  ? 'bg-sunny text-ink shadow-soft-yellow'
+                  : 'text-ink hover:bg-mint/40'
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <!-- Mobile Nav -->
+        <details class="md:hidden relative">
+          <summary class="list-none cursor-pointer w-12 h-12 flex items-center justify-center rounded-full bg-sunny shadow-soft-yellow text-2xl">
+            ☰
+          </summary>
+          <nav class="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl border-2 border-sunny/30 p-2 flex flex-col gap-1 z-50">
+            {navItems.map((item) => (
+              <a
+                href={item.href}
+                class={`px-4 py-3 rounded-xl font-semibold transition-colors ${
+                  currentPath === item.href
+                    ? 'bg-sunny text-ink'
+                    : 'hover:bg-mint/40'
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </details>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-20 bg-ink text-cream relative overflow-hidden">
+      <svg class="absolute top-0 left-0 w-full text-cream" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="currentColor" d="M0,32 C320,80 720,0 1440,48 L1440,0 L0,0 Z"></path>
+      </svg>
+      <div class="relative max-w-6xl mx-auto px-4 pt-24 pb-10 grid md:grid-cols-3 gap-10">
+        <div>
+          <h3 class="font-display font-bold text-xl mb-3 flex items-center gap-2">
+            <span>🌻</span> Förderverein
+          </h3>
+          <p class="text-cream/80 leading-relaxed">
+            Förderverein Kita Bretzenheim-Süd e.V. – wir machen den Kita-Alltag bunter.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-xl mb-3">Vorstand</h3>
+          <ul class="space-y-1 text-cream/80">
+            <li>Hristina Böhme <span class="text-mint">(1. Vorsitzende)</span></li>
+            <li>Lina Rath <span class="text-mint">(2. Vorsitzende)</span></li>
+            <li>Julia Bogner <span class="text-mint">(Kassenwartin)</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-xl mb-3">Kontakt</h3>
+          <p class="text-cream/80 mb-2">
+            <a class="hover:text-sunny transition-colors" href="mailto:fv.mz.kita@gmail.com">
+              fv.mz.kita@gmail.com
+            </a>
+          </p>
+          <p class="text-cream/60 text-sm">
+            <a href="/impressum" class="hover:text-sunny transition-colors">Impressum &amp; Datenschutz</a>
+          </p>
+        </div>
+      </div>
+      <div class="border-t border-cream/10 py-4 text-center text-cream/50 text-sm">
+        © {new Date().getFullYear()} Förderverein Kita Bretzenheim-Süd e.V. · Mit ❤️ für unsere Kinder
+      </div>
+    </footer>
+
+    <style is:global>
+      html { scroll-behavior: smooth; }
+      details > summary::-webkit-details-marker { display: none; }
+      body { font-feature-settings: "ss01", "cv11"; }
+    </style>
+  </body>
+</html>

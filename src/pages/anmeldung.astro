@@ -6,7 +6,7 @@ import { url } from '../lib/url';
 // TODO: Formspree-Endpoint einsetzen, sobald Account angelegt
 // const FORMSPREE_ENDPOINT = 'https://formspree.io/f/XXXXXXXX';
 const FORMSPREE_ENDPOINT = '';
-const action = FORMSPREE_ENDPOINT || 'mailto:fv.mz.kita@gmail.com';
+const action = FORMSPREE_ENDPOINT || 'mailto:fv.mz.kita@gmail.com,julia2312@gmail.com';
 const method = FORMSPREE_ENDPOINT ? 'POST' : 'POST'; // mailto akzeptiert POST → fällt auf default zurück
 const encType = FORMSPREE_ENDPOINT ? 'application/x-www-form-urlencoded' : 'text/plain';
 ---
@@ -226,7 +226,7 @@ const encType = FORMSPREE_ENDPOINT ? 'application/x-www-form-urlencoded' : 'text
 
       <p class="text-xs text-ink/50 text-center pt-2">
         * Pflichtfelder. Mit Absenden werden die Daten an
-        <a href="mailto:fv.mz.kita@gmail.com" class="underline">fv.mz.kita@gmail.com</a>
+        <a href="mailto:fv.mz.kita@gmail.com,julia2312@gmail.com" class="underline">fv.mz.kita@gmail.com</a> &amp; <a href="mailto:julia2312@gmail.com" class="underline">julia2312@gmail.com</a>
         übermittelt.
       </p>
     </form>

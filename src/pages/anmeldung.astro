@@ -3,12 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import { url } from '../lib/url';
 
-// TODO: Formspree-Endpoint einsetzen, sobald Account angelegt
-// const FORMSPREE_ENDPOINT = 'https://formspree.io/f/XXXXXXXX';
-const FORMSPREE_ENDPOINT = '';
-const action = FORMSPREE_ENDPOINT || 'mailto:fv.mz.kita@gmail.com,julia2312@gmail.com';
-const method = FORMSPREE_ENDPOINT ? 'POST' : 'POST'; // mailto akzeptiert POST → fällt auf default zurück
-const encType = FORMSPREE_ENDPOINT ? 'application/x-www-form-urlencoded' : 'text/plain';
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwvjpavj';
+const action = FORMSPREE_ENDPOINT;
+const method = 'POST';
+const encType = 'application/x-www-form-urlencoded';
 ---
 <BaseLayout title="Anmeldung – Förderverein Kita Bretzenheim-Süd e.V.">
   <section class="relative overflow-hidden bg-gradient-to-b from-sunny/20 via-cream to-cream pt-14 pb-10">
@@ -31,6 +29,10 @@ const encType = FORMSPREE_ENDPOINT ? 'application/x-www-form-urlencoded' : 'text
       enctype={encType}
       class="bg-white rounded-3xl shadow-2xl border-2 border-sunny/30 p-6 md:p-10 space-y-8"
     >
+      <!-- Formspree meta -->
+      <input type="hidden" name="_subject" value="Neue Anmeldung – Förderverein Kita Bretzenheim-Süd" />
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" style="display:none" />
+
       <!-- PERSÖNLICHE DATEN -->
       <fieldset class="space-y-5">
         <legend class="font-display font-bold text-2xl md:text-3xl mb-2 flex items-center gap-2">

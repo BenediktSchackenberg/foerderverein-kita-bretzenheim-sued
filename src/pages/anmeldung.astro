@@ -3,8 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import { url } from '../lib/url';
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwvjpavj';
-const action = FORMSPREE_ENDPOINT;
+const WEB3FORMS_KEY = 'ef2ed370-42b7-495f-acc0-0910ea4ebd42';
+const action = 'https://api.web3forms.com/submit';
 const method = 'POST';
 const encType = 'application/x-www-form-urlencoded';
 ---
@@ -29,9 +29,12 @@ const encType = 'application/x-www-form-urlencoded';
       enctype={encType}
       class="bg-white rounded-3xl shadow-2xl border-2 border-sunny/30 p-6 md:p-10 space-y-8"
     >
-      <!-- Formspree meta -->
-      <input type="hidden" name="_subject" value="Neue Anmeldung – Förderverein Kita Bretzenheim-Süd" />
-      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" style="display:none" />
+      <!-- Web3Forms meta -->
+      <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+      <input type="hidden" name="subject" value="Neue Anmeldung – Förderverein Kita Bretzenheim-Süd" />
+      <input type="hidden" name="from_name" value="Förderverein Kita Bretzenheim-Süd – Anmeldeformular" />
+      <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" style="display:none" />
 
       <!-- PERSÖNLICHE DATEN -->
       <fieldset class="space-y-5">

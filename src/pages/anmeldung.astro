@@ -22,7 +22,37 @@ const encType = 'application/x-www-form-urlencoded';
     </div>
   </section>
 
-  <section class="max-w-3xl mx-auto px-4 pb-20">
+  <section class="max-w-3xl mx-auto px-4 pb-10">
+    <!-- PDF-Alternative – prominente Karte vor dem Online-Formular -->
+    <div class="bg-gradient-to-br from-coral/10 via-cream to-sunny/15 border-2 border-coral/30 rounded-3xl p-6 md:p-8 mb-10 shadow-lg">
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <div class="text-7xl md:text-8xl flex-shrink-0" aria-hidden="true">📄</div>
+        <div class="flex-1 text-center md:text-left">
+          <h2 class="font-display font-bold text-2xl md:text-3xl mb-2">
+            Lieber auf <span class="text-coral">Papier</span>?
+          </h2>
+          <p class="text-ink/75 mb-4 text-base md:text-lg">
+            Kein Problem! Lade das Anmeldeformular als PDF herunter, drucke es aus,
+            füll es in Ruhe aus und gib es in der Kita ab oder schick es per Post.
+          </p>
+          <a
+            href={url('/anmeldung-formular.pdf')}
+            download
+            class="inline-flex items-center gap-2 bg-coral hover:bg-coral/90 text-white font-bold text-lg px-6 py-3 rounded-2xl shadow-md hover:shadow-xl transition-all hover:-translate-y-0.5"
+          >
+            ⬇️ PDF herunterladen
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trenner -->
+    <div class="flex items-center gap-4 mb-8" aria-hidden="true">
+      <div class="flex-1 h-0.5 bg-cream"></div>
+      <span class="font-display font-bold text-ink/50 text-lg">oder direkt online 👇</span>
+      <div class="flex-1 h-0.5 bg-cream"></div>
+    </div>
+
     <form
       action={action}
       method={method}
@@ -213,14 +243,7 @@ const encType = 'application/x-www-form-urlencoded';
       </fieldset>
 
       <!-- SUBMIT -->
-      <div class="flex flex-col sm:flex-row gap-4 items-center justify-between pt-4 border-t-2 border-cream">
-        <p class="text-sm text-ink/60">
-          Lieber auf Papier?
-          <a href={url('/anmeldung-formular.pdf')} class="text-coral font-semibold hover:underline">
-            PDF-Formular herunterladen 📄
-          </a>
-          <span class="block text-xs text-ink/40">(TODO: PDF hochladen)</span>
-        </p>
+      <div class="flex flex-col sm:flex-row gap-4 items-center justify-end pt-4 border-t-2 border-cream">
         <Button type="submit" size="lg" variant="primary">
           Absenden ✨
         </Button>
